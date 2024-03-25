@@ -1,0 +1,60 @@
+
+<div class="ui equal width padded grid">
+    <div class="row blue">
+        <div class="column">
+            Id
+        </div>
+        <div class="column">
+            Nome
+        </div>
+        <div class="column">
+            Telefone
+        </div>
+        <div class="column">
+            Origem
+        </div>
+        <div class="column">
+            Data de Contato
+        </div>
+        <div class="five wide column">
+            Observacao
+        </div>
+    </div>
+    {{#each lista}}
+    <div class="vertical row">
+        <div class="column">
+            <a href="/atualizar/{{this.id}}">
+            <button>
+                {{this.id}}
+            </button>
+            </a>
+        </div>
+        <div class="column">
+            {{this.nome}}
+        </div>
+        <div class="column">
+            {{this.telefone}}
+        </div>
+        <div class="column">
+            {{this.origem}}
+        </div>
+        <div class="column">
+            {{this.dataContato}}
+        </div>
+        <div class="five wide column" style=" word-wrap: break-word; ">
+            {{this.observacao}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+
+
+{{!-- <ul>
+{{#each lista}}
+<li>
+    nome: {{this.nome}}<br>
+    telefone: {{this.origem}}
+</li>
+{{/each}}
+</ul> --}}

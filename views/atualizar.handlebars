@@ -1,0 +1,81 @@
+
+<form method="post" action="/atualizar/editar" class="ui form">
+<div class="ui padded one column grid">
+
+            <input id="id" name="id" type="hidden" value="{{registro.id}}">
+
+<div class="row">
+    <div class="column">Nome:</div>
+    <div class="two wide column">
+        <div class="field" style="width: 900%;">
+            <input id="nome" name="nome" type="text" placeholder="nome" value="{{registro.nome}}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="column">Telefone:</div>
+    <div class="two wide column">
+        <div class="field" style="width: 900%;">
+            <input id="telefone" name="telefone" type="text" placeholder="(00) 00000-0000"  onchange="mascaraTelefone(this)" value="{{registro.telefone}}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="column">Origem:</div>
+    <div class="two wide column">
+            <select class="ui compact selection dropdown" id="origem" name="origem" style="width: 900%;">
+                <option value="Celular">Celular</option>
+                <option value="Telefone">Telefone</option>
+            </select>
+    </div>
+</div>
+<div class="row">
+    <div class="column">Data do Contato:</div>
+    <div class="two wide column">
+        <div class="field" style="width: 900%;">
+            <input id="dataContato" name="dataContato" type="date" value="{{registro.dataContato}}">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="column">Observação:</div>
+    <div class="two wide column">
+        <div class="field" style="width: 900%;">
+            <textarea id="observacao" name="observacao" type="text-area" placeholder="escreva a observação...">{{registro.observacao}}</textarea>
+        </div>
+    </div>
+</div>
+
+<div class="column">
+    <input class="ui blue button" type="submit"></input>
+</div>
+</div>
+</form>
+
+<script>
+    function mascaraTelefone(numero) {
+    let texto = numero.value;
+    texto = texto.replace(/[\-\(\) ]/g, '');
+    const isCelular = texto.length === 11;
+    let textoAjustado;
+    if (isCelular) {
+        const parte1 = texto.slice(0, 2);
+        const parte2 = texto.slice(2, 7);
+        const parte3 = texto.slice(7, 11);
+        textoAjustado = `(${parte1}) ${parte2}-${parte3}`;
+    } else {
+        const parte1 = texto.slice(0, 2);
+        const parte2 = texto.slice(2, 7);
+        const parte3 = texto.slice(7, 12);
+        textoAjustado = `(${parte1}) ${parte2}-${parte3}`;
+    }
+    numero.value = textoAjustado;
+    }
+
+    function tirarEspecial(numero) {
+    const texto = numero.value;
+    const textoAjustado = texto.replace(/[\-\(\) ]/g, '');
+
+    numero.value = textoAjustado;
+    }
+</script>
